@@ -8,6 +8,8 @@ import 'iconcontent.dart';
 const activecaedcolore = Color(0xff272A4E);
 const inactivecardcolor = Color(0xff111328);
 
+enum Gendertype { male, female }
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -16,8 +18,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Color malecaedcolur = inactivecardcolor;
   Color femalecaedcolur = inactivecardcolor;
-  void updatecaedcolur(int gender) {
-    if (gender == 1) {
+  void updatecaedcolur(Gendertype selectedgender) {
+    if (selectedgender == Gendertype.male) {
       if (malecaedcolur == inactivecardcolor) {
         malecaedcolur = activecaedcolore;
         femalecaedcolur = inactivecardcolor;
@@ -25,7 +27,7 @@ class _InputPageState extends State<InputPage> {
         malecaedcolur = inactivecardcolor;
       }
     }
-    if (gender == 2) {
+    if (selectedgender == Gendertype.female) {
       if (femalecaedcolur == inactivecardcolor) {
         femalecaedcolur = activecaedcolore;
         malecaedcolur = inactivecardcolor;
@@ -51,7 +53,7 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updatecaedcolur(1);
+                        updatecaedcolur(Gendertype.female);
                       });
                     },
                     child: mycontainer(
@@ -66,7 +68,7 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: (() {
                       setState(() {
-                        updatecaedcolur(2);
+                        updatecaedcolur(Gendertype.female);
                       });
                     }),
                     child: mycontainer(
