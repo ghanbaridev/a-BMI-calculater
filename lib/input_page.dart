@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'constansts.dart';
 import 'container.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'iconcontent.dart';
-
-const activecaedcolore = Color(0xff272A4E);
-const inactivecardcolor = Color(0xff111328);
 
 enum Gendertype { male, female }
 
@@ -17,26 +15,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gendertype? selectedgender;
-  // Color malecaedcolur = inactivecardcolor;
-  // Color femalecaedcolur = inactivecardcolor;
-  // void updatecaedcolur(Gendertype selectedgender) {
-  //   if (selectedgender == Gendertype.male) {
-  //     if (malecaedcolur == inactivecardcolor) {
-  //       malecaedcolur = activecaedcolore;
-  //       femalecaedcolur = inactivecardcolor;
-  //     } else {
-  //       malecaedcolur = inactivecardcolor;
-  //     }
-  //   }
-  //   if (selectedgender == Gendertype.female) {
-  //     if (femalecaedcolur == inactivecardcolor) {
-  //       femalecaedcolur = activecaedcolore;
-  //       malecaedcolur = inactivecardcolor;
-  //     } else {
-  //       femalecaedcolur = inactivecardcolor;
-  //     }
-  //   }
-  // }
+  int hight = 160;
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +72,38 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   flex: 2,
                   child: mycontainer(
+                    cardchild: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "Hight",
+                          style: labletext,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(
+                              hight.toString(),
+                              style: labletext2,
+                            ),
+                            Text("cm", style: labletext),
+                          ],
+                        ),
+                        Slider(
+                            value: hight.toDouble(),
+                            min: 80,
+                            max: 220,
+                            activeColor: Color.fromARGB(197, 57, 235, 21),
+                            inactiveColor: Color(0xff8d8e98),
+                            onChanged: (double newvalue) {
+                              setState(() {
+                                hight = newvalue.round();
+                              });
+                            }),
+                      ],
+                    ),
                     mycolor: Color(0xff272A4E),
                   ),
                 )
@@ -116,7 +127,7 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Container(
-            color: Color(0xffeb1555),
+            color: Color.fromARGB(197, 57, 235, 21),
             margin: EdgeInsets.only(top: 10),
             width: double.infinity,
             height: 80,
