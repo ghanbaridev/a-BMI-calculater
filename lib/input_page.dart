@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'calculatescreen.dart';
 import 'constansts.dart';
 import 'container.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'iconcontent.dart';
+import 'mybutoom.dart';
 
 enum Gendertype { male, female }
 
@@ -16,6 +17,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gendertype? selectedgender;
   int hight = 160;
+  int wihgt = 40;
+  int age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -116,22 +119,97 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: mycontainer(
                     mycolor: Color(0xff272A4E),
+                    cardchild: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "Wight",
+                          style: labletext,
+                        ),
+                        Text(
+                          wihgt.toString(),
+                          style: labletext2,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            FloatingActionButton(
+                              heroTag: 'd',
+                              backgroundColor: Color.fromARGB(197, 57, 235, 21),
+                              onPressed: () {
+                                setState(() {
+                                  wihgt++;
+                                });
+                              },
+                              child: Icon(Icons.add),
+                            ),
+                            FloatingActionButton(
+                              heroTag: 'c',
+                              backgroundColor: Color.fromARGB(197, 57, 235, 21),
+                              onPressed: () {
+                                setState(() {
+                                  wihgt--;
+                                });
+                              },
+                              child: Icon(Icons.remove),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: mycontainer(
                     mycolor: Color(0xff272A4E),
+                    cardchild: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "Age",
+                          style: labletext,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: labletext2,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            FloatingActionButton(
+                              heroTag: 'b',
+                              backgroundColor: Color.fromARGB(197, 57, 235, 21),
+                              onPressed: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                              child: Icon(Icons.add),
+                            ),
+                            FloatingActionButton(
+                              heroTag: 'a',
+                              backgroundColor: Color.fromARGB(197, 57, 235, 21),
+                              onPressed: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                              child: Icon(Icons.remove),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 )
               ],
             ),
           ),
-          Container(
-            color: Color.fromARGB(197, 57, 235, 21),
-            margin: EdgeInsets.only(top: 10),
-            width: double.infinity,
-            height: 80,
-          ),
+          mybutoon(butoomtext: "Calculate", ontap: "calculeatescreen"),
         ],
       ),
     );
