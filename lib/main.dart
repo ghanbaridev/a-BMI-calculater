@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:splashscreen/splashscreen.dart';
 
 import 'input_page.dart';
-import 'calculatescreen.dart';
 import 'input_page.dart';
 
 void main() => runApp(BMICalculator());
@@ -16,11 +16,16 @@ class BMICalculator extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xff0C1234),
         accentColor: Colors.purple,
       ),
-      home: InputPage(),
-      // routes: {
-      //   'calculeatescreen': (context) => Calculatorscreen(),
-      //   'inputpage': (context) => InputPage(),
-      // },
+      home: SplashScreen(
+          seconds: 3,
+          navigateAfterSeconds: InputPage(),
+          title: Text(
+            "Welcome",
+            style: TextStyle(
+                fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          backgroundColor: Color.fromARGB(255, 233, 175, 68),
+          loaderColor: Colors.red),
     );
   }
 }
