@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'constansts.dart';
 import 'container.dart';
+import 'input_page.dart';
 import 'mybutoom.dart';
+import 'calculator_fuction.dart';
 
 class Calculatorscreen extends StatelessWidget {
-  const Calculatorscreen({Key? key}) : super(key: key);
+  Calculatorscreen(
+      {required this.bmiresylt,
+      required this.interpreation,
+      required this.resulttext});
+  final String bmiresylt;
+  final String resulttext;
+  final String interpreation;
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +44,24 @@ class Calculatorscreen extends StatelessWidget {
                 children: [
                   Center(
                     child: Text(
-                      "normal",
-                      style: resulttext,
+                      resulttext,
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Color(0xff24d876),
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   Center(
                     child: Text(
-                      "20",
+                      bmiresylt,
                       style: Bmitext,
                     ),
                   ),
                   Center(
                     child: Text(
-                      "your bmi is low",
+                      interpreation,
                       style: bodyBmitext,
                     ),
                   )
@@ -56,7 +69,15 @@ class Calculatorscreen extends StatelessWidget {
               ),
             ),
           ),
-          mybutoon(butoomtext: "Re-Calculate", ontap: "inputpage"),
+          mybutoon(
+            butoomtext: "Re-Calculate",
+            ontap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => InputPage(),
+              ),
+            ),
+          ),
         ],
       ),
     );

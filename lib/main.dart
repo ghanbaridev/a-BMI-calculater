@@ -17,10 +17,10 @@ class BMICalculator extends StatelessWidget {
         accentColor: Colors.purple,
       ),
       home: InputPage(),
-      routes: {
-        'calculeatescreen': (context) => Calculatorscreen(),
-        'inputpage': (context) => InputPage(),
-      },
+      // routes: {
+      //   'calculeatescreen': (context) => Calculatorscreen(),
+      //   'inputpage': (context) => InputPage(),
+      // },
     );
   }
 }

@@ -3,7 +3,7 @@ import 'calculatescreen.dart';
 import 'constansts.dart';
 import 'container.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'calculator_fuction.dart';
 import 'iconcontent.dart';
 import 'mybutoom.dart';
 
@@ -209,7 +209,22 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          mybutoon(butoomtext: "Calculate", ontap: "calculeatescreen"),
+          mybutoon(
+              butoomtext: "Calculate",
+              ontap: () {
+                Calculator cal = Calculator(h: hight, w: wihgt);
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Calculatorscreen(
+                      bmiresylt: cal.calculatebmi(),
+                      interpreation: cal.result(),
+                      resulttext: cal.interpritation(),
+                    ),
+                  ),
+                );
+              }),
         ],
       ),
     );
